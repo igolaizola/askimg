@@ -1,0 +1,14 @@
+builds:
+  - id: askimg
+    binary: askimg
+    main: ./cmd/askimg
+    goarch:
+      - amd64
+      - arm64
+      - arm
+archives:
+  - id: askimg
+    builds:
+      - askimg
+    format: zip
+    name_template: 'askimg_{{ .Version }}_{{- if eq .Os "darwin" }}macos{{- else }}{{ .Os }}{{ end }}_{{ .Arch }}'
