@@ -179,6 +179,12 @@ func Ask(ctx context.Context, cfg *Config) (string, error) {
 		}
 	}
 
+	// Check if there was an error
+	if response.Error != "" {
+		log.Println("askimg:", string(bodyResp))
+		return "", fmt.Errorf("askimg: error in response: %s", response.Error)
+	}
+
 	// Return response
 	return response.Output, nil
 }
